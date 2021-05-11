@@ -1,13 +1,15 @@
 import './App.css';
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
 import { DataContext } from './context/DataContext'
+import { SearchContext } from './context/SearchContext'
 
 function App() {
   let [searchTerm, setSearchTerm] = useState('')
   let [data, setData] = useState([])
   let [message, setMessage] = useState('Search for Music!')
+  const searchInput = useRef('')
 
   function toTitleCase(str) {
     return str.replace(
@@ -42,7 +44,9 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar handleSearch={handleSearch} />
+      <SearchContext.Provider value={{searchInput, handleSearch}}>
+        <SearchBar handleSearch={handleSearch} />
+      </SearchContext.Provider>
       {message}
       <DataContext.Provider value={data}>
         <Gallery />
