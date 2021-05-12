@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { DataContext } from '../context/DataContext'
 
 const GalleryItem = (props) => {
     let [view, setView] = useState(false)

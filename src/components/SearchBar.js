@@ -12,7 +12,7 @@ const SearchBar = () => {
     return (
             <form>
                 <input ref={searchInput} type="text" placeholder="Search Here" />
-                <button onClick={handleSubbie} />
+                <button onClick={handleSubbie}>Submit</button>
             </form>
     )
 }
