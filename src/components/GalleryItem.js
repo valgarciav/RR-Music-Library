@@ -1,5 +1,4 @@
-import { useState, useContext } from 'react'
-import { DataContext } from '../context/DataContext'
+import { useState } from 'react'
 
 const GalleryItem = (props) => {
     let [view, setView] = useState(false)
@@ -44,7 +43,6 @@ const GalleryItem = (props) => {
         <div onClick={() => setView(!view)}
         style={{'display': 'inline-block'}}>
             {view ? detailView() : simpleView()}
-            {/* One Gallery Item */}
         </div>
     )
 } 
