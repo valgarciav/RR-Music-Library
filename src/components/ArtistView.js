@@ -26,6 +26,7 @@ const ArtistView = (props) => {
             <div>
                 <h1>{artistData[0].artistName}</h1>
                 {allAlbums}
+                <Link to="/">Home</Link>
             </div>
         )
     }

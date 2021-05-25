@@ -25,7 +25,7 @@ const AlbumView = (props) => {
             <div>
                 <h1>{albumData[0].collectionName}</h1>
                 {allAlbums}
-                <Link to="/">Home</Link> | <Link to={`/artist/${albumData[0].artistId}`}>Back</Link>
+                <Link to="/">Home</Link> | <Link to={`/artist/${albumData[0].artistId}`}>Back to Album View</Link>
             </div>
         )
     }
