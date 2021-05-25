@@ -52,7 +52,7 @@ function App() {
           {message}
           <Gallery data={data} />
         </Route>
-        <Route path="/album">
+        <Route path="/album/:id">
           <AlbumView term={searchTerm} />
         </Route>
         <Route path="/artist/:id">

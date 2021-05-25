@@ -1,21 +1,38 @@
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
+import {useParams, Link} from 'react-router-dom'
 
 const AlbumView = (props) => {
-
-    const API_URL = `https://itunes.apple.com/search?term=124910515`
+    const { id } = useParams()
+    const [ albumData, setAlbumData ] = useState([])
+    const [ loading, setLoading ] = useState(true)
     
     useEffect(() => {
         const fetchData = async () => {
+            const API_URL = `https://music-library-helper.herokuapp.com/song/${id}`
             const response = await fetch(API_URL)
             const resData = await response.json()
-            console.log(resData.results)
+            setAlbumData(resData.results)
+            setLoading(false)
         }
         fetchData()
-    })
+    }, [id])
+
+    const allAlbums =   albumData.filter(entity => entity.kind === 'song')
+                        .map((album, i) => { return (<div key={i}>{album.trackName}</div>)})
+
+    const bigData = () => {
+        return (
+            <div>
+                <h1>{albumData[0].collectionName}</h1>
+                {allAlbums}
+                <Link to="/">Home</Link> | <Link to={`/artist/${albumData[0].artistId}`}>Back</Link>
+            </div>
+        )
+    }
 
     return (
         <div>
-            <p>AlbumView</p>
+            {loading ? <div>loading</div> : bigData()}
         </div>
     )
 }

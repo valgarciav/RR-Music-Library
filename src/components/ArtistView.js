@@ -1,24 +1,38 @@
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const ArtistView = (props) => {
     const { id } = useParams()
+    const [ artistData, setArtistData ] = useState([])
+    const [ loading, setLoading ] = useState(true)
     
-    const API_URL = `https://music-library-helper.herokuapp.com/album/${id}`
-    console.log(API_URL)
-
     useEffect(() => {
+        const API_URL = `https://music-library-helper.herokuapp.com/album/${id}`
         const fetchData = async () => {
             const response = await fetch(API_URL)
             const resData = await response.json()
-            console.log(resData)
+            setArtistData(resData.results)
+            setLoading(false)
         }
         fetchData()
-    })
+    }, [id])
+
+    const allAlbums =   artistData.filter(entity => entity.collectionType === 'Album')
+                        .map((album, i) => { return (<div key={i}><Link to={`/album/${album.collectionId}`}>{album.collectionName}</Link></div>)})
+
+    const bigData = () => {
+        return (
+            <div>
+                <h1>{artistData[0].artistName}</h1>
+                {allAlbums}
+            </div>
+        )
+    }
 
     return (
         <div>
-            <p>ArtistView</p>
+            {loading ? <div>loading</div> : bigData()}
         </div>
     )
 }
