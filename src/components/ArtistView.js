@@ -21,7 +21,7 @@ const ArtistView = (props) => {
     const allAlbums =   artistData.filter(entity => entity.collectionType === 'Album')
                         .map((album, i) => { return (<div key={i}><Link to={`/album/${album.collectionId}`}>{album.collectionName}</Link></div>)})
 
-    const bigData = () => {
+    const displayData = () => {
         return (
             <div>
                 <h1>{artistData[0].artistName}</h1>
@@ -32,7 +32,7 @@ const ArtistView = (props) => {
 
     return (
         <div>
-            {loading ? <div>loading</div> : bigData()}
+            {loading ? <div>loading</div> : displayData()}
         </div>
     )
 }

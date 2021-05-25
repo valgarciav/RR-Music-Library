@@ -20,7 +20,7 @@ const AlbumView = (props) => {
     const allAlbums =   albumData.filter(entity => entity.kind === 'song')
                         .map((album, i) => { return (<div key={i}>{album.trackName}</div>)})
 
-    const bigData = () => {
+    const displayData = () => {
         return (
             <div>
                 <h1>{albumData[0].collectionName}</h1>
@@ -32,7 +32,7 @@ const AlbumView = (props) => {
 
     return (
         <div>
-            {loading ? <div>loading</div> : bigData()}
+            {loading ? <div>loading</div> : displayData()}
         </div>
     )
 }
