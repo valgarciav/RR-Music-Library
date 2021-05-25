@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const GalleryItem = (props) => {
     let [view, setView] = useState(false)
@@ -35,6 +36,7 @@ const GalleryItem = (props) => {
                 <h3>{props.d.collectionName}</h3>
                 <h4>{props.d.primaryGenreName}</h4>
                 <h4>{props.d.releaseDate}</h4>
+                <p><Link to={`/artist/${props.d.artistId}`}>Artist</Link></p>
             </div>
         )
     }
@@ -43,7 +45,6 @@ const GalleryItem = (props) => {
         <div onClick={() => setView(!view)}
         style={{'display': 'inline-block'}}>
             {view ? detailView() : simpleView()}
-            {/* One Gallery Item */}
         </div>
     )
 } 
