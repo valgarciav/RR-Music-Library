@@ -18,8 +18,15 @@ const ArtistView = (props) => {
         fetchData()
     }, [id])
 
-    const allAlbums =   artistData.filter(entity => entity.collectionType === 'Album')
-                        .map((album, i) => { return (<div key={i}><Link to={`/album/${album.collectionId}`}>{album.collectionName}</Link></div>)})
+    const allAlbums = artistData.filter(entity => entity.collectionType === 'Album')
+                        .map((album, i) => { 
+                            return (
+                                <div key={i}>
+                                    <Link to={`/album/${album.collectionId}`}>
+                                        {album.collectionName}
+                                    </Link>
+                                </div>)
+                                })
 
     const displayData = () => {
         return (
