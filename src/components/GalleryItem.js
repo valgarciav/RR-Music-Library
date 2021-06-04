@@ -32,11 +32,10 @@ const GalleryItem = (props) => {
                 'backgroundSize': 'cover',
                 'color': 'white'
             }}>
-                <h2>{props.d.trackName}</h2>
-                <h3>{props.d.collectionName}</h3>
+                <h2>"{props.d.trackName}"</h2>
+                <h3><Link to={`/artist/${props.d.artistId}`}>{props.d.artistName}</Link></h3>
+                <p><Link to={`/album/${props.d.collectionId}`}>{props.d.collectionName}</Link></p>
                 <h4>{props.d.primaryGenreName}</h4>
-                <h4>{props.d.releaseDate}</h4>
-                <p><Link to={`/artist/${props.d.artistId}`}>Artist</Link></p>
             </div>
         )
     }

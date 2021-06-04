@@ -1,14 +1,15 @@
 import {useEffect, useState} from 'react'
-import {useParams, Link} from 'react-router-dom'
+import {useParams, Link, useHistory} from 'react-router-dom'
 
 const AlbumView = (props) => {
     const { id } = useParams()
+    const history = useHistory()
     const [ albumData, setAlbumData ] = useState([])
     const [ loading, setLoading ] = useState(true)
     
     useEffect(() => {
         const fetchData = async () => {
-            const API_URL = `https://music-library-helper.herokuapp.com/song/${id}`
+            const API_URL = `http://localhost:4000/song/${id}`
             const response = await fetch(API_URL)
             const resData = await response.json()
             setAlbumData(resData.results)
@@ -17,22 +18,22 @@ const AlbumView = (props) => {
         fetchData()
     }, [id])
 
-    const allAlbums =   albumData.filter(entity => entity.kind === 'song')
-                        .map((album, i) => { return (<div key={i}>{album.trackName}</div>)})
-
-    const displayData = () => {
+    const navButtons = () => {
         return (
             <div>
-                <h1>{albumData[0].collectionName}</h1>
-                {allAlbums}
-                <Link to="/">Home</Link> | <Link to={`/artist/${albumData[0].artistId}`}>Back to Artist View</Link>
+                <button onClick={() => {history.push('/')}}>Home</button> | <button onClick={() => history.goBack()}>Back</button>
             </div>
         )
     }
 
+    const allAlbums =   albumData.filter(entity => entity.kind === 'song')
+                        .map((album, i) => { return (<div key={i}>{album.trackName}</div>)})
+
     return (
         <div>
-            {loading ? <div>loading</div> : displayData()}
+            {loading ? <p>Loading...</p> : <h2>{albumData[0].artistName}</h2>}
+            {navButtons()}
+            {allAlbums}
         </div>
     )
 }

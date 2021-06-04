@@ -47,10 +47,10 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar handleSearch={handleSearch} />
+      {message}
       <Router>
         <Route exact path="/">
-          {message}
+          <SearchBar handleSearch={handleSearch} />
           <Gallery data={data} />
         </Route>
         <Route path="/album/:id">
