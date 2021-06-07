@@ -4,7 +4,6 @@ import {useParams, Link, useHistory} from 'react-router-dom'
 const ArtistView = (props) => {
     const { id } = useParams()
     const [ artistData, setArtistData ] = useState([])
-    const [ loading, setLoading ] = useState(true)
     const history = useHistory()
     
     useEffect(() => {
@@ -13,7 +12,6 @@ const ArtistView = (props) => {
             const response = await fetch(API_URL)
             const resData = await response.json()
             setArtistData(resData.results)
-            setLoading(false)
         }
         fetchData()
     }, [id])
@@ -38,7 +36,7 @@ const ArtistView = (props) => {
 
     return (
         <div>
-            {loading ? <p>loading</p> : <h2>{artistData[0].artistName}</h2>}
+            {artistData.length > 0 ? <h2>{artistData[0].artistName}</h2> : <p>loading...</p>}
             {navButtons()}
             {allAlbums}
         </div>
