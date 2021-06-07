@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
 import {useParams, Link, useHistory} from 'react-router-dom'
 
-const ArtistView = (props) => {
+const ArtistView = () => {
     const { id } = useParams()
     const [ artistData, setArtistData ] = useState([])
     const history = useHistory()

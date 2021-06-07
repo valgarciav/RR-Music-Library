@@ -8,7 +8,7 @@ const AlbumView = (props) => {
     
     useEffect(() => {
         const fetchData = async () => {
-            const API_URL = `https://music-library-helper.herokuapp.com/song/${id}`
+            const API_URL = `http://localhost:4000/song/${id}`
             const response = await fetch(API_URL)
             const resData = await response.json()
             setAlbumData(resData.results)
