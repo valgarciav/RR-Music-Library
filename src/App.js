@@ -10,18 +10,8 @@ function App() {
   let [message, setMessage] = useState('Search for Music!')
   let searchInput = useRef('')
 
-  function toTitleCase(str) {
-    return str.replace(
-      /\w\S*/g,
-      function(txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      }
-    );
-  }
-
   const handleSearch = (e, term) => {
     e.preventDefault()
-    term = toTitleCase(term)
     fetch(`https://itunes.apple.com/search?term=${term}`)
     .then(response => response.json())
     .then(resData => {

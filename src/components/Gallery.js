@@ -5,9 +5,9 @@ import GalleryItem from './GalleryItem'
 const Gallery = () => {
     const data = useContext(DataContext)
 
-    const display = data.map((d, i) => {
+    const display = data.map((item, index) => {
         return (
-            <GalleryItem key={i} d={d} />
+            <GalleryItem key={index} item={item} />
         )
     })
 

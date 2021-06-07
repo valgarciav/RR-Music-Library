@@ -12,8 +12,8 @@ const GalleryItem = (props) => {
                 'margin' : '2px',
                 'position': 'relative'
             }}>
-                <h3>{props.d.trackName}</h3>
-                <h4>{props.d.collectionName}</h4>
+                <h3>{props.item.trackName}</h3>
+                <h4>{props.item.collectionName}</h4>
             </div>
         )
     }
@@ -26,15 +26,15 @@ const GalleryItem = (props) => {
                 'border': '1px solid black',
                 'margin' : '2px',
                 'position': 'relative',
-                'backgroundImage': `url(${props.d.artworkUrl100})`,
+                'backgroundImage': `url(${props.item.artworkUrl100})`,
                 'backgroundRepeat': 'no-repeat',
                 'backgroundSize': 'cover',
                 'color': 'white'
             }}>
-                <h2>{props.d.trackName}</h2>
-                <h3>{props.d.collectionName}</h3>
-                <h4>{props.d.primaryGenreName}</h4>
-                <h4>{props.d.releaseDate}</h4>
+                <h2>{props.item.trackName}</h2>
+                <h3>{props.item.collectionName}</h3>
+                <h4>{props.item.primaryGenreName}</h4>
+                <h4>{props.item.releaseDate}</h4>
             </div>
         )
     }
