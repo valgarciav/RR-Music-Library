@@ -10,7 +10,6 @@ const wrapPromise = (promise) => {
     let suspender = promise.then(response => {
         status = 'success'
         result = response
-        console.log('hello from suspender', result)
     }, err => {
         status = 'error'
         result = err
@@ -18,13 +17,10 @@ const wrapPromise = (promise) => {
     return {
         read() {
             if(status === 'pending') {
-                console.log('result is: ' + result)
                 throw suspender
             } else if (status === 'error') {
-                console.log(result)
                 throw result
             }
-            console.log('Hitting end')
             return result
         }
     }
