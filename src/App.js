@@ -2,7 +2,8 @@ import './App.css';
 import { useState, Suspense, useEffect } from 'react'
 import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
-import { createResource } from './helper'
+import Spinner from './components/Spinner'
+import { createResource as fetchData } from './helper'
 
 function App() {
   let [searchTerm, setSearchTerm] = useState('')
@@ -12,7 +13,8 @@ function App() {
   useEffect(() => {
     if (searchTerm) {
       document.title=`${searchTerm} Music`
-      setData(createResource(searchTerm))
+      console.log(fetchData(searchTerm))
+      setData(fetchData(searchTerm))
   }
   }, [searchTerm])
 
@@ -21,10 +23,10 @@ function App() {
     setSearchTerm(term)
   }
 
-  const renderSearch = () => {
+  const renderGallery = () => {
     if(data){
       return (
-        <Suspense fallback={<h1>Loading...</h1>}>
+        <Suspense fallback={<Spinner />}>
           <Gallery data={data} />
         </Suspense>
       )
@@ -35,7 +37,7 @@ function App() {
     <div className="App">
       <SearchBar handleSearch={handleSearch} />
       {message}
-      {renderSearch()}
+      {renderGallery()}
     </div>
   );
 }
