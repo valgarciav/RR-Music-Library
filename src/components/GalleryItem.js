@@ -34,7 +34,7 @@ const GalleryItem = (props) => {
             }}>
                 <h2>{props.item.trackName}</h2>
                 <h3>
-                    <Link to={`/album/${props.item.artistId}`}>
+                    <Link to={`/artist/${props.item.artistId}`}>
                         {props.item.artistName}
                     </Link>
                 </h3>
