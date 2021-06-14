@@ -26,7 +26,14 @@ const AlbumView = () => {
         )
     }
 
-    const allSongs = albumData.filter(entity => entity.kind === 'song').map((album, i) => { return (<div key={i}>{album.trackName}</div>)})
+    const allSongs = albumData.filter(entity => entity.kind === 'song')
+    .map((album, i) => {
+        return (
+            <div key={i}>
+                {album.trackName}
+            </div>
+        )
+    })
 
     return (
         <div>
