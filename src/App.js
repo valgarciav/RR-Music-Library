@@ -5,6 +5,7 @@ import ArtistView from './components/ArtistView'
 import AlbumView from './components/AlbumView'
 import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
+import Spinner from './components/Spinner'
 import { DataContext } from './context/DataContext'
 import { SearchContext } from './context/SearchContext'
 import { createResource as fetchData } from './helper'
@@ -22,7 +23,7 @@ function App() {
   const renderGallery = () => {
     if(data) {
       return (
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Spinner />}>
           <Gallery />
         </Suspense>
       )

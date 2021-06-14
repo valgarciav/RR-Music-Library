@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import { useParams, useHistory } from 'react-router-dom'
+import Spinner from './Spinner'
 
 const AlbumView = () => {
     const { id } = useParams()
@@ -29,7 +30,7 @@ const AlbumView = () => {
 
     return (
         <div>
-            {albumData.length > 0 ? <h2>{albumData[0].collectionName}</h2> : <p>loading...</p>}
+            {albumData.length > 0 ? <h2>{albumData[0].collectionName}</h2> : <Spinner />}
             {navButtons()}
             {allAlbums}
         </div>
