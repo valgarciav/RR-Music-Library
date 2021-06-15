@@ -10,7 +10,7 @@ import { DataContext } from './context/DataContext'
 import { SearchContext } from './context/SearchContext'
 import { createResource as fetchData } from './helper'
 
-function App() {
+const App = () => {
   let searchInput = useRef('')
   let [data, setData] = useState(null)
   let [message, setMessage] = useState('Search for Music!')
